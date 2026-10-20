@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#100a08">
+  <title>洪宪抉择</title>
+  <link rel="stylesheet" href="styles.css?v=20261015-natural-voice">
+</head>
+<body>
+  <main id="shell">
+    <div id="portrait-warning" role="status">
+      <div class="rotate-icon">↻</div>
+      <strong>请横屏游玩</strong>
+      <span>旋转设备以进入 16:9 剧情画面</span>
+    </div>
+
+    <section id="game" aria-label="洪宪抉择互动剧情游戏">
+      <img id="background" alt="" draggable="false">
+      <div id="wash"></div>
+      <div id="grain"></div>
+
+      <header id="hud">
+        <div id="scene-meta"><span id="date"></span><span id="tag"></span></div>
+        <div id="controls">
+          <button id="music-btn" type="button" aria-label="开关背景音乐" aria-pressed="true">音乐·开</button>
+          <button id="voice-btn" type="button" aria-label="开关人物语音" aria-pressed="true">语音·开</button>
+          <button id="font-btn" type="button" aria-label="切换文字大小">字</button>
+          <button id="fullscreen-btn" type="button" aria-label="全屏">全屏</button>
+        </div>
+      </header>
+
+      <div id="characters" aria-live="polite"></div>
+      <div id="prop-layer"></div>
+
+      <section id="title-card" class="panel-state" hidden>
+        <div class="seal">洪宪元年 · 历史抉择</div>
+        <h1>洪宪抉择</h1>
+        <p>你可以让帝制走得更远，<br>但能让它真正成功吗？</p>
+        <div class="title-actions">
+          <button id="new-game" class="gold-button">进入 1915 年</button>
+          <button id="continue-game" class="ghost-button" hidden>继续上次进度</button>
+        </div>
+        <small class="voice-note">角色语音为 AI 合成的戏剧化演绎，并非历史人物真实录音</small>
+      </section>
+
+      <section id="year-card" class="panel-state" hidden><span id="year-text"></span></section>
+
+      <section id="dialogue-state" class="panel-state" hidden>
+        <div id="dialogue-box"><p id="dialogue-text"></p><span class="advance-mark">◆</span></div>
+      </section>
+
+      <section id="narration-state" class="panel-state" hidden>
+        <p id="narration-text"></p><span class="advance-mark">◆</span>
+      </section>
+
+      <section id="document-state" class="panel-state" hidden>
+        <div id="document-card">
+          <img id="document-image" alt="">
+          <div id="document-copy"><div id="document-kicker"></div><h2 id="document-title"></h2><p id="document-text"></p></div>
+        </div>
+        <button id="document-continue" class="gold-button">继续</button>
+      </section>
+
+      <section id="choice-state" class="panel-state" hidden>
+        <div class="choice-heading"><span>抉择</span><h2 id="choice-question"></h2></div>
+        <div id="choice-buttons"></div>
+      </section>
+
+      <section id="ending-state" class="panel-state" hidden>
+        <p id="ending-kicker">架空结局</p>
+        <h2 id="ending-title"></h2>
+        <p id="ending-text"></p>
+        <div class="ending-actions">
+          <button id="history-btn" class="gold-button">查看历史总结</button>
+          <button id="restart-btn" class="ghost-button">重新开始</button>
+          <button id="title-btn" class="ghost-button">返回标题</button>
+        </div>
+      </section>
+
+      <section id="summary-state" class="panel-state" hidden>
+        <h2>历史总结：帝制不可重来</h2>
+        <div id="summary-copy"></div>
+        <button id="curtain-btn" class="gold-button">进入谢幕</button>
+      </section>
+
+      <section id="curtain-state" class="panel-state" hidden>
+        <div id="cast"></div>
+        <div class="curtain-message"><h2>谢幕</h2><p>历史无法重来，但每一次选择，<br>都能帮助我们理解历史为何如此发生。</p>
+          <div><button id="again-btn" class="gold-button">再次游玩</button><button id="end-btn" class="ghost-button">结束游戏</button></div>
+        </div>
+        <img class="curtain left" src="assets/06_props/05_red_curtain_left.png" alt="">
+        <img class="curtain right" src="assets/06_props/06_red_curtain_right.png" alt="">
+      </section>
+
+      <button id="advance" type="button" aria-label="继续剧情"></button>
+      <div id="progress" aria-hidden="true"><i></i></div>
+    </section>
+  </main>
+  <script src="audio/voice-manifest.js?v=20261015-natural-voice"></script>
+  <script src="game.js?v=20261015-natural-voice"></script>
+</body>
+</html>

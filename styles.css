@@ -1,0 +1,99 @@
+:root {
+  color-scheme: dark;
+  --ink: #eef2f0;
+  --muted: #9aa3a3;
+  --line: rgba(255,255,255,.13);
+  --gold: #d9ad62;
+  --red: #9f2f2b;
+  --bg: #090d16;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.noise { position: fixed; inset: 0; pointer-events: none; z-index: 20; opacity: .035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E"); }
+
+.topbar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+  height: 88px; padding: 0 clamp(24px, 5vw, 78px);
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.brand { display: flex; align-items: center; gap: 13px; }
+.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(217,173,98,.75); color: var(--gold); font-family: Georgia, serif; font-size: 22px; transform: rotate(45deg); }
+.brand-mark::first-letter { transform: rotate(-45deg); }
+.brand > span:last-child { display: grid; line-height: 1.08; }
+.brand strong { font-family: "Songti SC", SimSun, serif; font-size: 18px; letter-spacing: .18em; }
+.brand small { margin-top: 5px; color: #aeb5b4; font-size: 8px; letter-spacing: .28em; }
+nav { display: flex; gap: clamp(24px, 4vw, 54px); font-size: 13px; letter-spacing: .15em; }
+nav a { color: #d8dddd; transition: color .2s; }
+nav a:hover { color: var(--gold); }
+
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 130px clamp(24px, 9vw, 150px) 90px; isolation: isolate; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -3; filter: saturate(.72) contrast(1.08); transform: scale(1.02); }
+.hero-shade { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(5,9,14,.95) 0%, rgba(7,10,15,.77) 38%, rgba(9,12,17,.23) 72%), linear-gradient(0deg, #090d16 0%, transparent 28%); }
+.hero-copy { width: min(700px, 92vw); animation: rise .9s ease-out both; }
+.eyebrow { display: flex; align-items: center; gap: 12px; color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+.eyebrow span { width: 34px; height: 1px; background: currentColor; }
+h1 { margin: 25px 0 24px; font-family: "Songti SC", STSong, Georgia, serif; font-weight: 500; font-size: clamp(54px, 7.5vw, 106px); line-height: .98; letter-spacing: -.04em; }
+h1 em { color: var(--gold); font-style: normal; }
+.lead { max-width: 580px; margin: 0; color: #c5ccca; font-size: clamp(15px, 1.35vw, 19px); line-height: 1.9; letter-spacing: .05em; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.play { min-height: 54px; padding: 0 26px; display: inline-flex; align-items: center; justify-content: center; gap: 34px; border: 1px solid var(--line); font-size: 14px; font-weight: 700; letter-spacing: .08em; transition: .25s ease; }
+.play.primary { background: var(--gold); border-color: var(--gold); color: #17130e; }
+.play.primary:hover { background: #edc879; transform: translateY(-2px); }
+.play.secondary:hover { border-color: rgba(217,173,98,.8); color: var(--gold); }
+.meta { display: flex; align-items: center; gap: 14px; margin-top: 32px; color: #8f9999; font-size: 11px; letter-spacing: .13em; }
+.meta i { width: 3px; height: 3px; border-radius: 50%; background: #6e7777; }
+.scroll-cue { position: absolute; right: clamp(24px, 5vw, 78px); bottom: 52px; writing-mode: vertical-rl; color: #9aa2a1; font-size: 9px; letter-spacing: .28em; }
+.scroll-cue span { display: inline-block; width: 1px; height: 64px; margin-top: 14px; background: linear-gradient(var(--gold), transparent); }
+
+.library { max-width: 1440px; margin: 0 auto; padding: 105px clamp(24px, 6vw, 86px) 130px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 42px; }
+.section-heading h2 { margin: 12px 0 0; font-family: "Songti SC", STSong, serif; font-size: clamp(32px, 4vw, 56px); font-weight: 500; }
+.count { margin: 0; color: #7f8989; font-size: 12px; letter-spacing: .16em; }
+.count strong { color: var(--gold); font: 46px/1 Georgia, serif; margin-right: 8px; }
+.game-grid { display: grid; grid-template-columns: 1.22fr .78fr; gap: clamp(22px, 3vw, 42px); }
+.game-card { min-width: 0; }
+.card-art { position: relative; display: block; aspect-ratio: 16/10; overflow: hidden; background: #161d27; border: 1px solid var(--line); }
+.card-art img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .4s; filter: saturate(.75); }
+.card-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(3,6,10,.72)); }
+.card-art:hover img { transform: scale(1.045); filter: saturate(1); }
+.status { position: absolute; left: 20px; top: 20px; z-index: 2; padding: 8px 11px; background: rgba(128,32,29,.9); border: 1px solid rgba(255,255,255,.18); font-size: 10px; letter-spacing: .16em; }
+.status.muted { background: rgba(10,16,24,.82); }
+.arrow { position: absolute; right: 20px; bottom: 18px; z-index: 2; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; font-size: 20px; transition: .25s; }
+.card-art:hover .arrow { background: var(--gold); border-color: var(--gold); color: #17130e; transform: rotate(45deg); }
+.card-copy { padding: 23px 2px 0; }
+.genre { margin: 0 0 9px !important; color: var(--gold) !important; font-size: 10px !important; letter-spacing: .18em; }
+.card-copy h3 { margin: 0 0 10px; font-family: "Songti SC", STSong, serif; font-size: clamp(26px, 2.6vw, 40px); font-weight: 500; }
+.card-copy p { margin: 0; max-width: 630px; color: #8f9999; font-size: 14px; line-height: 1.8; }
+.cellar-art { background: radial-gradient(circle at 50% 20%, #313f55, #111722 62%, #080b10); }
+.pixel-scene { position: absolute; inset: 0; overflow: hidden; image-rendering: pixelated; }
+.pixel-scene::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: repeating-linear-gradient(90deg, #131a22 0 18px, #19222d 18px 20px), repeating-linear-gradient(0deg, transparent 0 17px, rgba(255,255,255,.04) 17px 19px); border-top: 2px solid #34404d; }
+.moon { position: absolute; width: 72px; height: 72px; border-radius: 50%; background: #b8c1af; box-shadow: 0 0 35px rgba(191,203,182,.2); left: 18%; top: 15%; }
+.door { position: absolute; width: 25%; height: 48%; left: 52%; bottom: 24%; background: #271b20; border: 8px solid #3b4753; box-shadow: inset 0 0 0 3px #12171e; }
+.door::after { content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%; right: 13%; top: 50%; background: #d9ad62; }
+.hero-dot { position: absolute; width: 28px; height: 34px; left: 39%; bottom: 25%; background: #d1b6a4; border-radius: 45% 45% 35% 35%; box-shadow: 0 15px 0 -8px #773b37; }
+
+footer { min-height: 92px; padding: 0 clamp(24px, 6vw, 86px); display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); color: #6f7979; font-size: 10px; letter-spacing: .16em; }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 780px) {
+  .topbar { height: 72px; }
+  nav { display: none; }
+  .hero { align-items: end; padding-bottom: 94px; }
+  .hero-shade { background: linear-gradient(0deg, rgba(5,8,13,.98) 0%, rgba(5,8,13,.74) 56%, rgba(5,8,13,.25)); }
+  .scroll-cue { display: none; }
+  .game-grid { grid-template-columns: 1fr; gap: 54px; }
+  .section-heading { align-items: start; }
+  .count { display: none; }
+  footer { flex-direction: column; justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
